@@ -10,8 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringRunner.class)
@@ -44,8 +43,8 @@ public class PostsRepositoryTest {
 
         //then
         Posts posts = postsList.get(0);
-        assertThat(posts.getTitle(), is("테스트 게시글"));
-        assertThat(posts.getContent(), is("테스트 본문"));
+        assertEquals(posts.getTitle(), "테스트 게시글");
+        assertEquals(posts.getContent(), "테스트 본문");
     }
 
     @Test
