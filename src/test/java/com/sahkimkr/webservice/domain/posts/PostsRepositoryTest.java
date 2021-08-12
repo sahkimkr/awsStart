@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -31,12 +31,12 @@ public class PostsRepositoryTest {
     }
 
     @Test
-    public void fref() {
+    public void 게시글저장_불러오기() {
         //given
         postsRepository.save(Posts.builder()
                 .title("테스트 게시글")
                 .content("테스트 본문")
-                .author("jojoldu@gmail.com")
+                .author("sahkimkr@gmail.com")
                 .build());
 
         //when
@@ -55,15 +55,15 @@ public class PostsRepositoryTest {
         postsRepository.save(Posts.builder()
                 .title("테스트 게시글")
                 .content("테스트 본문")
-                .author("jojoldu@gmail.com")
+                .author("sahkimkr@gmail.com")
                 .build());
         //when
         List<Posts> postsList = postsRepository.findAll();
 
         //then
         Posts posts = postsList.get(0);
-        assertTrue(posts.getCreatedDate().isAfter(now));
-        assertTrue(posts.getModifiedDate().isAfter(now));
+        assertTrue(posts.getCreatedDate().isAfter(now.minusSeconds(1)));
+        assertTrue(posts.getModifiedDate().isAfter(now.minusSeconds(1)));
     }
 
 }
