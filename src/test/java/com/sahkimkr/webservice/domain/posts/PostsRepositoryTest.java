@@ -43,6 +43,8 @@ public class PostsRepositoryTest {
 
         //then
         Posts posts = postsList.get(0);
+        System.out.println(posts.getTitle());
+        System.out.println("테스트 게시글");
         assertEquals(posts.getTitle(), "테스트 게시글");
         assertEquals(posts.getContent(), "테스트 본문");
     }
