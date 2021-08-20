@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -33,7 +35,7 @@ public class PostsServiceTest {
         //given
         PostsSaveRequestDto dto = PostsSaveRequestDto.builder()
                 .author("sahkimkr@gmail.com")
-                .content("테스트")
+                .content("테스트 게시글")
                 .title("테스트 타이틀")
                 .build();
 
@@ -42,8 +44,8 @@ public class PostsServiceTest {
 
         //then
         Posts posts = postsRepository.findAll().get(0);
-        assertThat(posts.getAuthor()).isEqualTo(dto.getAuthor());
-        assertThat(posts.getContent()).isEqualTo(dto.getContent());
-        assertThat(posts.getTitle()).isEqualTo(dto.getTitle());
+        assertThat(posts.getAuthor(),is(equalTo(dto.getAuthor())));
+        assertThat(posts.getContent(),is(equalTo(dto.getContent())));
+        assertThat(posts.getTitle(),is(equalTo(dto.getTitle())));
     }
 }

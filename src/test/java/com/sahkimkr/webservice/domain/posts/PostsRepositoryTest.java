@@ -33,8 +33,8 @@ public class PostsRepositoryTest {
     public void 게시글저장_불러오기() {
         //given
         postsRepository.save(Posts.builder()
-                .title("테스트 게시글")
-                .content("테스트 본문")
+                .title("테스트 타이틀")
+                .content("테스트 게시글")
                 .author("sahkimkr@gmail.com")
                 .build());
 
@@ -44,9 +44,9 @@ public class PostsRepositoryTest {
         //then
         Posts posts = postsList.get(0);
         System.out.println(posts.getTitle());
-        System.out.println("테스트 게시글");
-        assertEquals(posts.getTitle(), "테스트 게시글");
-        assertEquals(posts.getContent(), "테스트 본문");
+        System.out.println("테스트 타이틀");
+        assertEquals(posts.getTitle(), "테스트 타이틀");
+        assertEquals(posts.getContent(), "테스트 게시글");
     }
 
     @Test
@@ -54,8 +54,8 @@ public class PostsRepositoryTest {
         //given
         LocalDateTime now = LocalDateTime.now();
         postsRepository.save(Posts.builder()
-                .title("테스트 게시글")
-                .content("테스트 본문")
+                .title("테스트 타이틀")
+                .content("테스트 게시글")
                 .author("sahkimkr@gmail.com")
                 .build());
         //when
